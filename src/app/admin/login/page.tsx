@@ -44,17 +44,15 @@ export default function AdminLoginPage() {
       <div className="relative w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-3 mb-4">
+          <div className="flex flex-col items-center justify-center mb-4">
             <Image 
-              src="/AvironinLogo.jpg" 
+              src="/AvironinLogoBig.svg" 
               alt="Avironin" 
-              width={48} 
-              height={48} 
+              width={260} 
+              height={80} 
+              className="object-contain"
             />
-            <div className="text-left">
-              <span className="block text-2xl font-black text-white">AVIRONIN</span>
-              <span className="block text-[10px] font-bold text-azure tracking-[0.3em]">ADMIN PORTAL</span>
-            </div>
+            <span className="block text-[10px] font-bold text-azure tracking-[0.3em] mt-2">ADMIN PORTAL</span>
           </div>
           <p className="text-gray-400">Sign in to access the admin dashboard</p>
         </div>

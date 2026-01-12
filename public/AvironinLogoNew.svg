@@ -1,0 +1,22 @@
+<svg width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="primaryGradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FB923C" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(40, 20) scale(0.35)">
+      <g transform="translate(256 256)"> 
+        <path d="M0 -220 L190.5 -110 L0 0 L-190.5 -110 Z" fill="url(#primaryGradient)" stroke="#FFFFFF" stroke-width="10"/>
+        <path d="M0 0 L190.5 -110 L190.5 110 L0 220 Z" fill="#334155" stroke="#FFFFFF" stroke-width="10"/>
+        <path d="M0 0 L0 220 L-190.5 110 L-190.5 -110 Z" fill="#94A3B8" stroke="#FFFFFF" stroke-width="10"/>
+        <circle cx="0" cy="0" r="60" fill="#FFFFFF"/>
+        <circle cx="0" cy="0" r="45" fill="#EA580C"/>
+      </g>
+  </g>
+
+  <g transform="translate(240, 115)">
+    <text x="0" y="0" font-family="'Merriweather', serif" font-weight="900" font-size="100" fill="#1F2937" letter-spacing="4">AVIRONIN</text>
+  </g>
+</svg>

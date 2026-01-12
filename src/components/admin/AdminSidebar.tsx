@@ -48,7 +48,7 @@ export default function AdminSidebar() {
       <div className="p-6 border-b border-white/10">
         <Link href="/admin" className="flex items-center space-x-3">
           <Image 
-            src="/AvironinLogo.jpg" 
+            src="/AvironinLogo.svg" 
             alt="Avironin" 
             width={36} 
             height={36} 

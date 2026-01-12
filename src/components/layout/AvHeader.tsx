@@ -35,17 +35,14 @@ const AvHeader = () => {
             <AvContainer>
                 <div className="flex items-center justify-between">
                     <Link href="/" className="group flex items-center">
-                        <div className="bg-white rounded-lg p-2 shadow-sm">
-                            <Image 
-                                src="/AvironinLogoBig.jpg" 
-                                alt="Avironin" 
-                                width={isScrolled ? 120 : 140} 
-                                height={isScrolled ? 40 : 45} 
-                                className="object-contain" // basic contain, width controlled by prop
-                                style={{ width: 'auto', height: 'auto' }} // Fix aspect ratio warning
-                                priority
-                            />
-                        </div>
+                        <Image 
+                            src="/AvironinLogoBig.svg" 
+                            alt="Avironin" 
+                            width={isScrolled ? 160 : 200} 
+                            height={isScrolled ? 40 : 50} 
+                            className="object-contain" 
+                            priority
+                        />
                     </Link>
 
                     <AvNavigation />
