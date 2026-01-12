@@ -84,6 +84,7 @@ export default function NewEssayPage() {
       seo_description: seoDescription || undefined,
       published: publish,
       featured: false,
+      content_type: 'essay',
     });
 
     setIsSaving(false);
