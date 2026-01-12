@@ -1,4 +1,4 @@
-import { supabase } from './client';
+import { supabase, hasSupabaseCredentials } from './client';
 
 // Types
 export type ContentType = 'essay' | 'blog' | 'whitepaper';
@@ -82,6 +82,10 @@ export interface NewsletterSubscriber {
 // --- Post Functions ---
 
 export async function getFeaturedPosts(limit = 3): Promise<PostSummary[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty featured posts');
+        return [];
+    }
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -104,6 +108,10 @@ export async function getFeaturedPosts(limit = 3): Promise<PostSummary[]> {
 }
 
 export async function getPublishedPosts(contentType?: ContentType): Promise<PostSummary[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty published posts');
+        return [];
+    }
     let query = supabase
         .from('posts')
         .select(`
@@ -129,6 +137,10 @@ export async function getPublishedPosts(contentType?: ContentType): Promise<Post
 }
 
 export async function getPostsByContentType(contentType: ContentType): Promise<PostSummary[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty posts by content type');
+        return [];
+    }
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -151,6 +163,10 @@ export async function getPostsByContentType(contentType: ContentType): Promise<P
 
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning null for post by slug');
+        return null;
+    }
     console.log(`fetching post for slug: "${slug}"`);
     const { data, error } = await supabase
         .from('posts')
@@ -175,6 +191,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getPostsByCategory(category: string): Promise<PostSummary[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty posts by category');
+        return [];
+    }
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -260,6 +280,10 @@ export async function subscribeToNewsletter(email: string): Promise<boolean> {
 // --- Admin Functions ---
 
 export async function getAllPosts(): Promise<PostSummary[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty posts');
+        return [];
+    }
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -305,6 +329,10 @@ export async function togglePublished(id: string, published: boolean): Promise<b
 }
 
 export async function getPostById(id: string): Promise<Post | null> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning null for post by id');
+        return null;
+    }
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -329,6 +357,10 @@ export async function getPostById(id: string): Promise<Post | null> {
 // --- Author Functions ---
 
 export async function getAllAuthors(): Promise<Author[]> {
+    if (!hasSupabaseCredentials) {
+        console.warn('Supabase credentials missing, returning empty authors');
+        return [];
+    }
     const { data, error } = await supabase
         .from('authors')
         .select('*')
