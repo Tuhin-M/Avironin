@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import AvCard from "@/components/ui/AvCard";
-import { getFeaturedPosts, getPublishedPosts, Post } from "@/lib/supabase/db";
+import { getFeaturedPosts, getPublishedPosts, PostSummary } from "@/lib/supabase/db";
 import { format } from "date-fns";
 
 /**
@@ -12,7 +12,7 @@ import { format } from "date-fns";
  * Falls back to latest published posts if no featured posts exist.
  */
 export default function FeaturedPosts() {
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<PostSummary[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

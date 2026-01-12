@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import AvContainer from "@/components/layout/AvContainer";
 import AvSection from "@/components/layout/AvSection";
-import { getPublishedPosts, Post } from "@/lib/supabase/db";
+import { getPublishedPosts, PostSummary } from "@/lib/supabase/db";
 import { format } from "date-fns";
 import Link from "next/link";
 import { FileText, Clock, Calendar, ArrowRight, Download, Search, BookOpen } from "lucide-react";
@@ -14,7 +14,7 @@ import { FileText, Clock, Calendar, ArrowRight, Download, Search, BookOpen } fro
  * Displays all published white papers.
  */
 export default function WhitePapersIndexView() {
-    const [papers, setPapers] = useState<Post[]>([]);
+    const [papers, setPapers] = useState<PostSummary[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
 

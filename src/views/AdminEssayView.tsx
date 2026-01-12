@@ -74,6 +74,7 @@ export default function AdminEssayView() {
             slug: generateSlug(title),
             content,
             summary: content.substring(0, 200).replace(/<[^>]*>/g, '') + '...',
+            content_type: 'essay',
             category: category || 'STRATEGY',
             read_time: readTime,
             seo_description: seoDescription || undefined,

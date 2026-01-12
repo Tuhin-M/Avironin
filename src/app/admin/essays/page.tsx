@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import Link from 'next/link';
-import { getAllPosts, deletePost, togglePublished, Post } from '@/lib/supabase/db';
+import { getAllPosts, deletePost, togglePublished, PostSummary } from '@/lib/supabase/db';
 import { format } from 'date-fns';
 import { 
   Plus, 
@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export default function AdminEssaysPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostSummary[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<'all' | 'published' | 'draft'>('all');

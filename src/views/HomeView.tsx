@@ -176,7 +176,7 @@ export default function HomeView() {
                         <div className="relative">
                             <div className="aspect-square bg-gradient-to-br from-azure/5 to-azure/20 rounded-3xl flex items-center justify-center p-12 border border-azure/20">
                                 <Image 
-                                    src="/AvironinLogo.jpg" 
+                                    src="/AvironinLogo.svg" 
                                     alt="Avironin" 
                                     width={200} 
                                     height={200}

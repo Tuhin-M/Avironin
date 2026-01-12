@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import AvContainer from "@/components/layout/AvContainer";
 import AvSection from "@/components/layout/AvSection";
-import { getPublishedPosts, Post } from "@/lib/supabase/db";
+import { getPublishedPosts, PostSummary } from "@/lib/supabase/db";
 import { format } from "date-fns";
 import Link from "next/link";
 import { Newspaper, Clock, Calendar, ArrowRight, Search, Filter } from "lucide-react";
@@ -14,7 +14,7 @@ import { Newspaper, Clock, Calendar, ArrowRight, Search, Filter } from "lucide-r
  * Displays all published blog posts.
  */
 export default function BlogsIndexView() {
-    const [blogs, setBlogs] = useState<Post[]>([]);
+    const [blogs, setBlogs] = useState<PostSummary[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
 

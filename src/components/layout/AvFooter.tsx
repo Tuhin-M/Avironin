@@ -41,7 +41,7 @@ const AvFooter = () => {
                         <div className="lg:col-span-2 space-y-6">
                             <Link href="/" className="inline-flex items-center space-x-3">
                                 <Image 
-                                    src="/AvironinLogo.jpg" 
+                                    src="/AvironinLogo.svg" 
                                     alt="Avironin" 
                                     width={44} 
                                     height={44} 

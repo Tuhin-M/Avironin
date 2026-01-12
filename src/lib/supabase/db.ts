@@ -35,6 +35,8 @@ export interface Post {
     updated_at?: string;
 }
 
+export type PostSummary = Omit<Post, 'content'>;
+
 // --- Upload Helper ---
 export async function uploadWhitePaperPDF(file: File): Promise<string | null> {
     const fileExt = file.name.split('.').pop();
@@ -79,7 +81,7 @@ export interface NewsletterSubscriber {
 
 // --- Post Functions ---
 
-export async function getFeaturedPosts(limit = 3): Promise<Post[]> {
+export async function getFeaturedPosts(limit = 3): Promise<PostSummary[]> {
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -95,10 +97,13 @@ export async function getFeaturedPosts(limit = 3): Promise<Post[]> {
         console.error('Error fetching featured posts:', error);
         return [];
     }
-    return data || [];
+    return (data || []).map((post: any) => ({
+        ...post,
+        author: post.author?.[0] || post.author
+    })) as PostSummary[];
 }
 
-export async function getPublishedPosts(contentType?: ContentType): Promise<Post[]> {
+export async function getPublishedPosts(contentType?: ContentType): Promise<PostSummary[]> {
     let query = supabase
         .from('posts')
         .select(`
@@ -117,10 +122,13 @@ export async function getPublishedPosts(contentType?: ContentType): Promise<Post
         console.error('Error fetching published posts:', error);
         return [];
     }
-    return data || [];
+    return (data || []).map((post: any) => ({
+        ...post,
+        author: post.author?.[0] || post.author
+    })) as PostSummary[];
 }
 
-export async function getPostsByContentType(contentType: ContentType): Promise<Post[]> {
+export async function getPostsByContentType(contentType: ContentType): Promise<PostSummary[]> {
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -135,7 +143,10 @@ export async function getPostsByContentType(contentType: ContentType): Promise<P
         console.error('Error fetching posts by content type:', error);
         return [];
     }
-    return data || [];
+    return (data || []).map((post: any) => ({
+        ...post,
+        author: post.author?.[0] || post.author
+    })) as PostSummary[];
 }
 
 
@@ -155,10 +166,15 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
         console.error(`Error fetching post by slug "${slug}":`, JSON.stringify(error, null, 2));
         return null;
     }
-    return data;
+    if (!data) return null;
+    const post = data as any;
+    return {
+        ...post,
+        author: post.author?.[0] || post.author
+    } as Post;
 }
 
-export async function getPostsByCategory(category: string): Promise<Post[]> {
+export async function getPostsByCategory(category: string): Promise<PostSummary[]> {
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -173,7 +189,10 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
         console.error('Error fetching posts by category:', error);
         return [];
     }
-    return data || [];
+    return (data || []).map((post: any) => ({
+        ...post,
+        author: post.author?.[0] || post.author
+    })) as PostSummary[];
 }
 
 export async function createPost(post: Omit<Post, 'id' | 'created_at' | 'updated_at'>): Promise<Post | null> {
@@ -240,7 +259,7 @@ export async function subscribeToNewsletter(email: string): Promise<boolean> {
 
 // --- Admin Functions ---
 
-export async function getAllPosts(): Promise<Post[]> {
+export async function getAllPosts(): Promise<PostSummary[]> {
     const { data, error } = await supabase
         .from('posts')
         .select(`
@@ -253,7 +272,10 @@ export async function getAllPosts(): Promise<Post[]> {
         console.error('Error fetching all posts:', error);
         return [];
     }
-    return data || [];
+    return (data || []).map((post: any) => ({
+        ...post,
+        author: post.author?.[0] || post.author
+    })) as PostSummary[];
 }
 
 export async function deletePost(id: string): Promise<boolean> {
@@ -296,7 +318,12 @@ export async function getPostById(id: string): Promise<Post | null> {
         console.error('Error fetching post by id:', error);
         return null;
     }
-    return data;
+    if (!data) return null;
+    const post = data as any;
+    return {
+        ...post,
+        author: post.author?.[0] || post.author
+    } as Post;
 }
 
 // --- Author Functions ---
@@ -311,7 +338,7 @@ export async function getAllAuthors(): Promise<Author[]> {
         console.error('Error fetching authors:', error);
         return [];
     }
-    return data || [];
+    return (data as Author[]) || [];
 }
 
 export async function createAuthor(author: Omit<Author, 'id' | 'created_at'>): Promise<Author | null> {

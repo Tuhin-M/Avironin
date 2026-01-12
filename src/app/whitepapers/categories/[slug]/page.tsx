@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import AvContainer from "@/components/layout/AvContainer";
 import AvSection from "@/components/layout/AvSection";
-import { getPostsByCategory, Post } from "@/lib/supabase/db";
+import { getPostsByCategory, PostSummary } from "@/lib/supabase/db";
 import { format } from "date-fns";
 import Link from "next/link";
 import { FileText, Clock, Calendar, ArrowRight, ArrowLeft, BookOpen } from "lucide-react";
@@ -27,7 +27,7 @@ const categoryInfo: Record<string, { title: string; description: string }> = {
 export default function WhitepaperCategoryPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostSummary[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const categoryMap: Record<string, string> = {

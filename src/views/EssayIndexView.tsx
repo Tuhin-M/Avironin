@@ -6,7 +6,7 @@ import AvSection from "@/components/layout/AvSection";
 import { AvEssayCard } from "@/components/content/AvContentComponents";
 import { categories } from "@/content/config/navigation";
 import Link from "next/link";
-import { getPublishedPosts, Post } from "@/lib/supabase/db";
+import { getPublishedPosts, PostSummary } from "@/lib/supabase/db";
 import { format } from "date-fns";
 
 /**
@@ -15,7 +15,7 @@ import { format } from "date-fns";
  * Displays an archive of intelligence essays fetched from Supabase.
  */
 export default function EssayIndexView() {
-    const [essays, setEssays] = useState<Post[]>([]);
+    const [essays, setEssays] = useState<PostSummary[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
