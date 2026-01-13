@@ -5,6 +5,12 @@ compatibility_flags = ["nodejs_compat"]
 # OpenNext uses .open-next directory
 pages_build_output_dir = ".open-next/assets"
 
+# Custom domain routes
+routes = [
+  { pattern = "avironin.org/*", custom_domain = true },
+  { pattern = "www.avironin.org/*", custom_domain = true }
+]
+
 [vars]
 # These should be set in Cloudflare Pages dashboard
 # NEXT_PUBLIC_SUPABASE_URL = ""
