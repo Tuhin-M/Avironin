@@ -1,3 +1,11 @@
 name = "avironin"
 compatibility_date = "2026-01-12"
-pages_build_output_dir = ".vercel/output/static"
+compatibility_flags = ["nodejs_compat"]
+
+# OpenNext uses .open-next directory
+pages_build_output_dir = ".open-next/assets"
+
+[vars]
+# These should be set in Cloudflare Pages dashboard
+# NEXT_PUBLIC_SUPABASE_URL = ""
+# NEXT_PUBLIC_SUPABASE_ANON_KEY = ""
