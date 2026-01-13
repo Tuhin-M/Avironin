@@ -1,6 +1,5 @@
 import PostDetailView from "@/views/PostDetailView";
 
-export const runtime = 'edge';
 
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
