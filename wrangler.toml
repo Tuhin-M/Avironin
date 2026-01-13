@@ -2,14 +2,14 @@ name = "avironin"
 main = ".open-next/worker.js"
 compatibility_date = "2026-01-12"
 compatibility_flags = ["nodejs_compat"]
+workers_dev = true
 
 # Assets configuration for OpenNext
 assets = { directory = ".open-next/assets", binding = "ASSETS" }
 
-# Custom domain routes (no wildcards or paths allowed)
+# Custom domain route
 routes = [
-  { pattern = "avironin.org", custom_domain = true },
-  { pattern = "www.avironin.org", custom_domain = true }
+  { pattern = "avironin.org", custom_domain = true }
 ]
 
 [vars]
