@@ -6,13 +6,13 @@ compatibility_flags = ["nodejs_compat"]
 # Assets configuration for OpenNext
 assets = { directory = ".open-next/assets", binding = "ASSETS" }
 
-# Custom domain routes
+# Custom domain routes (no wildcards or paths allowed)
 routes = [
-  { pattern = "avironin.org/*", custom_domain = true },
-  { pattern = "www.avironin.org/*", custom_domain = true }
+  { pattern = "avironin.org", custom_domain = true },
+  { pattern = "www.avironin.org", custom_domain = true }
 ]
 
 [vars]
-# These should be set in Cloudflare dashboard
+# These are set in Cloudflare dashboard
 # NEXT_PUBLIC_SUPABASE_URL = ""
 # NEXT_PUBLIC_SUPABASE_ANON_KEY = ""
