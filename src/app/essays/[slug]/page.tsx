@@ -1,5 +1,6 @@
 import PostDetailView from "@/views/PostDetailView";
 
-export default async function EssayPage({ params }: { params: { slug: string } }) {
-    return <PostDetailView slug={params.slug} type="essay" />;
+export default async function EssayPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    return <PostDetailView slug={slug} type="essay" />;
 }
